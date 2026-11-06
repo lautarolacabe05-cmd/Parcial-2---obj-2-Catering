@@ -1,33 +1,37 @@
 package ar.edu.unahur.obj2.catering.Servicios;
 
 import ar.edu.unahur.obj2.catering.Excepciones.PrecioNegativoException;
+import ar.edu.unahur.obj2.catering.Propuestas.Propuesta;
 
-public class Servicio {
-    protected String nombre;
-    protected double precio;
+public class Servicio implements Propuesta {
+    private final String nombre;
+    private final double precio;
 
     public Servicio(String nombre, double precio) {
-        this.nombre = nombre;
-        this.precio = precioEsValido(precio);
-    }
-
-    private double precioEsValido(double precio) {
         if (precio < 0) {
             throw new PrecioNegativoException("El precio no puede ser negativo");
         }
-        return precio;
+        this.nombre = nombre;
+        this.precio = precio;
     }
 
-    public int cantidadServicios() {
-        return 1;
-    }
-
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public double getPrecio() {
         return precio;
     }
-    
+
+    @Override
+    public int getCantidadServicios() {
+        return 1;
+    }
+
+    @Override
+    public boolean tieneServicio(String nombreServicio) {
+        return nombre.equals(nombreServicio);
+    }
 }
