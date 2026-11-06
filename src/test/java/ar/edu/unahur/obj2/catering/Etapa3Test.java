@@ -23,7 +23,6 @@ import ar.edu.unahur.obj2.catering.Servicios.Servicio;
 class Etapa3Test {
     private static final double DELTA = 0.01;
 
-    // JUnit crea una instancia nueva por cada test, así que cada uno parte del catálogo inicial.
     private final Catalogo catalogo = new Catalogo();
     private final GestorDeCarta gestor = new GestorDeCarta();
     private final Servicio fotografo = new Servicio("Fotógrafo", 100000);
