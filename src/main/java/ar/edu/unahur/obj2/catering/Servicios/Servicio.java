@@ -5,14 +5,18 @@ import ar.edu.unahur.obj2.catering.Propuestas.Propuesta;
 
 public class Servicio implements Propuesta {
     private final String nombre;
-    private final double precio;
+    private double precio;
 
     public Servicio(String nombre, double precio) {
-        if (precio < 0) {
+        this.nombre = nombre;
+        actualizarPrecio(precio);
+    }
+
+    public final void actualizarPrecio(double nuevoPrecio) {
+        if (nuevoPrecio < 0) {
             throw new PrecioNegativoException("El precio no puede ser negativo");
         }
-        this.nombre = nombre;
-        this.precio = precio;
+        this.precio = nuevoPrecio;
     }
 
     @Override
